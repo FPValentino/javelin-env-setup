@@ -5,6 +5,8 @@ Welcome to the backend setup for the Javelin IntelliJ Extension. This repository
 ## ⚠️ Prerequisites (READ FIRST)
 Before running anything, your machine **must** have the following installed. You also need at least **250GB of free space** on the drive where your WSL virtual machine is installed.
 
+https://www.youtube.com/watch?v=5Mfe54238xE - Pwede niyo panoorin to for installation ng Docker - Then proceed kayo sa * **Crucial** part.
+
 1. **[WSL 2 & Ubuntu](https://learn.microsoft.com/en-us/windows/wsl/install):** Open a Windows PowerShell as Administrator and run: `wsl --install`. Ensure you are using Ubuntu as your default distribution.
 2. **[Docker Desktop](https://www.docker.com/products/docker-desktop/):**
    Download and install Docker Desktop for Windows. 
