@@ -20,6 +20,7 @@ sudo apt install -y python3-pip python3-venv git
 # 2. Install pipx and poetry (the package manager)
 sudo apt install -y pipx
 pipx ensurepath
+export PATH="$HOME/.local/bin:$PATH"
 pipx install poetry
 
 # 3. Clone GitBug-Java

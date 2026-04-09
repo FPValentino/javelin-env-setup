@@ -19,13 +19,13 @@ https://www.youtube.com/watch?v=5Mfe54238xE - Pwede niyo panoorin to for install
 1. Open your Ubuntu terminal.
 2. Download the setup script:
    ```bash
-   wget [https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)[YOUR_USERNAME]/javelin-env-setup/main/setup_javelin.sh
+   wget https://raw.githubusercontent.com/[YOUR_USERNAME]/javelin-env-setup/main/setup_javelin.sh
    ```
 3. Run the installer:
    ```bash
    bash setup_javelin.sh
    ```
-*Note: This script uses an auto-resume feature. If your internet drops, simply press the UP arrow and run `bash setup_javelin.sh` again. It will resume exactly where it left off.*
+*Note: The large dataset downloads use auto-resume (`wget -c`). If your internet drops during the download phase, re-run `bash setup_javelin.sh` and `wget` will resume where it left off. Earlier steps (apt installs, git clone) will safely re-run without issue.*
 
 ---
 
@@ -39,7 +39,7 @@ Once the setup is complete, you can use our interactive Python tool to pull spec
    ```
 2. Download the Javelin target selector script:
    ```bash
-   wget [https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)[YOUR_USERNAME]/javelin-env-setup/main/extract_bugs.py
+   wget https://raw.githubusercontent.com/[YOUR_USERNAME]/javelin-env-setup/main/extract_bugs.py
    ```
 3. Install the UI dependency:
    ```bash
