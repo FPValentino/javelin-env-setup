@@ -35,7 +35,6 @@ https://www.youtube.com/watch?v=5Mfe54238xE - Pwede niyo panoorin to for install
 
 Once the setup is complete, you have two ways to pull bugs into your `~/javelin-workspaces` folder for testing. Both scripts automatically enforce strict naming conventions and safely apply the `--fixed` flag for you.
 
-<<<<<<< HEAD
 First, navigate to the GitBug-Java framework folder:
 ```bash
 cd ~/gitbug-java
@@ -64,10 +63,8 @@ Use this if you want a visual menu to browse projects and select individual bugs
    ```bash
    poetry run python extract.py
    ```
-<<<<<<< HEAD
 ---
 **Next Steps for the Evaluation Team:** Once the bugs are extracted, move over to the `javelin-evaluation-pipeline` repository and run `generate_patches.py` to build the ground truth!
 =======
 
 The script will ask you which project and bugs you want. It will automatically create a `~/javelin-workspaces` folder and extract both the buggy and fixed versions of the code there.
->>>>>>> 82abfe8d79033de3327560939f2cb6b8999c65ac
