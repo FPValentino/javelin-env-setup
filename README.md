@@ -16,12 +16,10 @@ https://www.youtube.com/watch?v=5Mfe54238xE - Pwede niyo panoorin to for install
 
 ## 🚀 Step 1: Automated Installation
 
-*Note: Please REPLACE `[YOUR_USERNAME]` in the links below with the actual GitHub username hosting this repository!*
-
 1. Open your Ubuntu terminal.
 2. Download the setup script:
    ```bash
-   wget https://raw.githubusercontent.com/[YOUR_USERNAME]/javelin-env-setup/main/setup_javelin.sh
+   wget https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/setup_javelin.sh
    ```
 3. Run the installer:
    ```bash
