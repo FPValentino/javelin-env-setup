@@ -49,11 +49,11 @@ Use this if you want a visual menu to browse projects and select individual bugs
    ```
 2. Download the Javelin target selector script:
    ```bash
-   wget https://raw.githubusercontent.com/[YOUR_USERNAME]/javelin-env-setup/main/extract_bugs.py
+   wget https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/extract_bugs.py
    ```
 3. Install the UI dependency:
    ```bash
-   wget [https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)[YOUR_USERNAME]/javelin-env-setup/main/extract.py
+   wget [https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)FPValentino/javelin-env-setup/main/extract.py
    poetry run pip install questionary
    ```
 2. Launch the extractor:
