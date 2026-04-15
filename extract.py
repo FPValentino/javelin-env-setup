@@ -93,7 +93,14 @@ def main():
         success_count += 1
 
     print(f"\n✅ All done! Successfully extracted {success_count}/{len(selected_bugs)} bugs to {workspace_dir}")
-    print("Next step: Run 'generate_patches.py' to build your ground truth!")
+    print("\n========================================================")
+    print("NEXT STEPS:")
+    print("1. Compile the buggy project:")
+    print("   cd ~/javelin-workspaces/YOUR-BUG-ID-buggy")
+    print("   mvn clean compile test-compile")
+    print("2. Run Javelin in IntelliJ to generate your .csv ranking.")
+    print("3. Move the .csv to Windows and run your Python Evaluation Pipeline!")
+    print("========================================================\n")
 
 if __name__ == "__main__":
     main()
