@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=5Mfe54238xE - Pwede niyo panoorin to for install
 1. Open your Ubuntu terminal.
 2. Download the setup script:
    ```bash
-   wget [https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/setup_javelin.sh](https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/setup_javelin.sh)
+   wget https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/setup_javelin.sh
    ```
 3. Run the installer:
    ```bash
@@ -39,7 +39,7 @@ Once the setup is complete, you can pull bugs into your `~/javelin-workspaces` f
    ```
 2. Download the interactive target selector script:
    ```bash
-   wget [https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/extract.py](https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/extract.py)
+   wget https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/extract.py
    ```
 3. Install the UI dependency and run the script:
    ```bash
