@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=5Mfe54238xE - Pwede niyo panoorin to for install
 1. Open your Ubuntu terminal.
 2. Download the setup script:
    ```bash
-   wget https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/setup_javelin.sh
+   wget [https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/setup_javelin.sh](https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/setup_javelin.sh)
    ```
 3. Run the installer:
    ```bash
@@ -31,37 +31,66 @@ https://www.youtube.com/watch?v=5Mfe54238xE - Pwede niyo panoorin to for install
 
 ## 🐛 Step 2: Extracting Bugs for Javelin
 
-Once the setup is complete, you have two ways to pull bugs into your `~/javelin-workspaces` folder for testing. Both scripts automatically enforce strict naming conventions and safely apply the `--fixed` flag for you.
+Once the setup is complete, you can pull bugs into your `~/javelin-workspaces` folder for testing. The interactive script automatically enforces strict naming conventions and safely pulls both the buggy and fixed versions.
 
-First, navigate to the GitBug-Java framework folder:
-```bash
-cd ~/gitbug-java
-```
-
-### Option A: Interactive Mode (Select specific bugs)
-Use this if you want a visual menu to browse projects and select individual bugs to download.
-
-1. Download the script and install the UI dependency:
-=======
-1. Navigate to the GitBug-Java folder:
+1. Navigate to the GitBug-Java framework folder:
    ```bash
    cd ~/gitbug-java
    ```
-2. Download the Javelin target selector script:
+2. Download the interactive target selector script:
    ```bash
-   wget https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/extract_bugs.py
+   wget [https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/extract.py](https://raw.githubusercontent.com/FPValentino/javelin-env-setup/main/extract.py)
    ```
-3. Install the UI dependency:
+3. Install the UI dependency and run the script:
    ```bash
-   wget [https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)FPValentino/javelin-env-setup/main/extract.py
    poetry run pip install questionary
-   ```
-2. Launch the extractor:
-   ```bash
    poetry run python extract.py
    ```
----
-**Next Steps for the Evaluation Team:** Once the bugs are extracted, move over to the `javelin-evaluation-pipeline` repository and run `generate_patches.py` to build the ground truth!
-=======
+*The script will ask you which project and bugs you want. It will automatically create a `~/javelin-workspaces` folder and extract both the buggy and fixed versions of the code there.*
 
-The script will ask you which project and bugs you want. It will automatically create a `~/javelin-workspaces` folder and extract both the buggy and fixed versions of the code there.
+---
+
+## 🔨 Step 3: Compiling the Bug (Required for JaCoCo)
+
+Javelin’s JaCoCo engine relies on Java Bytecode to track test coverage. Because of this, it cannot read raw `.java` files. You **must** compile the extracted bug before Javelin can analyze it.
+
+1. Navigate to the newly extracted **buggy** folder (replace `BUG-ID` with the actual folder name):
+   ```bash
+   cd ~/javelin-workspaces/BUG-ID-buggy
+   ```
+2. Compile the project and its tests using Maven:
+   ```bash
+   mvn clean compile test-compile
+   ```
+*Wait until you see a **BUILD SUCCESS** message. If the build fails, the project may require a specific Java version (e.g., Java 8 vs Java 21).*
+
+---
+
+## 🎯 Step 4: Running Javelin (Data Generation)
+
+Now that the code is compiled into `.class` files, you can fire the Javelin engine to generate the fault localization rankings.
+
+1. Open the `javelin-cli` source code in **IntelliJ IDEA**.
+2. Edit your **Run Configuration** arguments to point directly to the compiled workspace in WSL. 
+   
+   *Example arguments for the **Ochiai-MS** algorithm:*
+   ```text
+   run --args="-a ochiai-ms -t /home/paul/javelin-workspaces/BUG-ID-buggy/target/classes -T /home/paul/javelin-workspaces/BUG-ID-buggy/target/test-classes -s /home/paul/javelin-workspaces/BUG-ID-buggy/src/main/java -o /home/paul/javelin-workspaces/BUG-ID-buggy/BUG-ID.csv"
+   ```
+3. Click **Run**. Once finished, Javelin will generate your `.csv` ranking file directly inside the workspace folder.
+
+---
+
+## 📊 Step 5: The Evaluation Pipeline (Grading)
+
+Once Javelin generates the `.csv` ranking file, the data generation phase is officially complete! 
+
+To calculate the EXAM Score and Top-N accuracy against the "Fixed" ground truth, you must move your data to the evaluation pipeline.
+
+1. Using Windows File Explorer, navigate to your WSL directory (`\\wsl.localhost\Ubuntu\home\paul\javelin-workspaces\`).
+2. Copy your newly generated `.csv` file.
+3. Head over to the dedicated Evaluation Repository for the final grading steps:
+   
+   👉 **[Javelin Evaluation Pipeline Repository](https://github.com/FPValentino/javelin-evaluation-pipeline)**
+
+Follow the `README.md` instructions in that repository to place your data, run the Python scripts (`generate_patches.py`, `build_ground_truth.py`, etc.), and calculate your final thesis results!
